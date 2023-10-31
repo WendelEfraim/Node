@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>
+        Olá mundo!
+    </p>
+
+    <div id='mensagem'>
+    </div>
+    
+    <script>
+    let corpo = document.body
+    let p = document.getElementsByTagName('p')[0]
+    let d = document.getElementById('mensagem')
+    
+    p.style.color = 'blue'
+    d.style.cursor = 'pointer'
+    d.style.color = '#ff007f'
+    corpo.style.background = 'black'
+
+const el = document.querySelector('#mensagem');
+const texts = [
+  'Apresentamos a partir de agora o nosso JavaScript com tamanha sublimidade',
+  'Este é um efeito de digitação contínua e impressionante!',
+  'Aprenda, pratique, crie!',
+]; // Adicione mais textos aqui, se desejar
+const interval = 25;
+const pauseInterval = 1500; // Intervalo entre apagar e redigitar
+
+function showText(el, text, interval, pauseInterval) {
+  const char = text.split('').reverse();
+
+  const type = setInterval(() => {
+    if (!char.length) {
+      clearInterval(type);
+
+      setTimeout(() => {
+        el.innerHTML = ''; // Apagar o texto
+        setTimeout(() => {
+          showText(el, texts[Math.floor(Math.random() * texts.length)], interval, pauseInterval);
+        }, pauseInterval);
+      }, pauseInterval);
+
+      return;
+    }
+
+    const next = char.pop();
+    el.innerHTML += next;
+  }, interval);
+}
+
+showText(el, texts[Math.floor(Math.random() * texts.length)], interval, pauseInterval);
+
+
+
+prompt('como esta?')
+        
+    </script>
+
+</body>
+</html>
